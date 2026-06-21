@@ -9,10 +9,12 @@ import Contact from './components/Contact'
 import ProjectModal from './components/ProjectModal'
 import Snowfall from './components/Snowfall'
 import CustomCursor from './components/CustomCursor'
+import Preloader from './components/Preloader'
 
 function App() {
   const [activePage, setActivePage] = useState('about')
   const [modalData, setModalData] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   const pages = {
     about: <About />,
@@ -24,6 +26,8 @@ function App() {
 
   return (
     <>
+      {loading && <Preloader onComplete={() => setLoading(false)} />}
+
       <Snowfall />
       <CustomCursor />
 

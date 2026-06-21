@@ -2222,4 +2222,105 @@ textarea.form-input {
   top: -14px;
   left: -14px;
   opacity: 1;
-}
+}
+
+/* ── PRELOADER ── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: var(--eerie-black-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* CSS snow inside preloader */
+.preloader-snow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.preloader-flake {
+  position: absolute;
+  top: -10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  animation: preloader-fall linear infinite;
+}
+
+@keyframes preloader-fall {
+  0%   { transform: translateY(-10px) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Center stage */
+.preloader-stage {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.preloader-line {
+  width: 80px;
+  height: 1.5px;
+  background: var(--orange-yellow-crayola);
+  margin: 0 auto 20px;
+}
+
+.preloader-subtitle {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--light-gray-70);
+  margin-bottom: 28px;
+}
+
+.preloader-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 40px;
+  transform-style: preserve-3d;
+}
+
+.preloader-char {
+  display: inline-block;
+  font-size: clamp(38px, 8vw, 92px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--white-1);
+  text-shadow:
+    0 0 40px hsla(45, 100%, 72%, 0.15),
+    0 2px 0 rgba(0,0,0,0.4);
+  will-change: transform, opacity;
+}
+
+.preloader-space {
+  width: 0.35em;
+}
+
+/* Gold progress bar */
+.preloader-bar-track {
+  width: min(480px, 80vw);
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  margin: 0 auto;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.preloader-bar {
+  height: 100%;
+  background: linear-gradient(to right, hsl(45,100%,72%), hsl(35,100%,68%));
+  border-radius: 2px;
+  box-shadow: 0 0 12px hsla(45,100%,72%,0.6);
+  will-change: transform;
+}
+
