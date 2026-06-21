@@ -7,6 +7,8 @@ import Projects from './components/Projects'
 import Resume from './components/Resume'
 import Contact from './components/Contact'
 import ProjectModal from './components/ProjectModal'
+import Snowfall from './components/Snowfall'
+import CustomCursor from './components/CustomCursor'
 
 function App() {
   const [activePage, setActivePage] = useState('about')
@@ -22,6 +24,9 @@ function App() {
 
   return (
     <>
+      <Snowfall />
+      <CustomCursor />
+
       <Navbar activePage={activePage} setActivePage={setActivePage} />
 
       <main>
@@ -48,3 +53,4 @@ function App() {
 }
 
 export default App
+

@@ -2165,3 +2165,61 @@ textarea.form-input {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
 }
+
+/* ── CUSTOM CURSOR ── */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: var(--orange-yellow-crayola);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.15s ease, height 0.15s ease, top 0.15s ease, left 0.15s ease;
+  will-change: transform;
+}
+
+.cursor-dot--click {
+  width: 4px;
+  height: 4px;
+  top: -2px;
+  left: -2px;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: -18px;
+  left: -18px;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--orange-yellow-crayola);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  opacity: 0.55;
+  transition: width 0.25s ease, height 0.25s ease, top 0.25s ease, left 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
+}
+
+.cursor-ring--hover {
+  width: 56px;
+  height: 56px;
+  top: -28px;
+  left: -28px;
+  opacity: 0.85;
+  border-color: var(--vegas-gold);
+}
+
+.cursor-ring--click {
+  width: 28px;
+  height: 28px;
+  top: -14px;
+  left: -14px;
+  opacity: 1;
+}
