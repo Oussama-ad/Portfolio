@@ -3,25 +3,14 @@ function Resume() {
     <>
       <header className="resume-header">
         <h2 className="h2 article-title">Resume</h2>
-        <div className="resume-actions">
-          <a
-            href="/assets/Mohamed_Oussama_Resume.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="download-btn"
-          >
-            <ion-icon name="eye-outline"></ion-icon>
-            <span>View PDF</span>
-          </a>
-          <a
-            href="/assets/Mohamed_Oussama_Resume.pdf"
-            download="Mohamed_Oussama_Resume.pdf"
-            className="download-btn"
-          >
-            <ion-icon name="download-outline"></ion-icon>
-            <span>Download</span>
-          </a>
-        </div>
+        <a
+          href="/assets/Mohamed_Oussama_Resume.pdf"
+          download="Admane_Mohamed_Oussama_CV.pdf"
+          className="download-btn"
+        >
+          <ion-icon name="download-outline"></ion-icon>
+          <span>Download CV</span>
+        </a>
       </header>
 
       {/* Education */}

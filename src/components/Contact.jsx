@@ -4,7 +4,6 @@ const SOCIAL_LINKS = [
   { href: 'https://github.com/', icon: 'logo-github', label: 'GitHub' },
   { href: 'https://www.linkedin.com/in/akhileswar-kamale/', icon: 'logo-linkedin', label: 'LinkedIn' },
   { href: 'https://leetcode.com/', icon: 'code-slash-outline', label: 'LeetCode' },
-  { href: 'https://www.instagram.com/linesbyakhileswar/', icon: 'logo-instagram', label: 'Instagram' },
 ]
 
 function Contact() {

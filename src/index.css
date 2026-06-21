@@ -2117,4 +2117,51 @@ textarea.form-input {
     transform: translateY(0);
   }
 }
-
+
+/* ── SIDEBAR NAME & TYPEWRITER ── */
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.25;
+}
+
+.name-line {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white-2);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.name-line--highlight {
+  font-size: 17px;
+  font-weight: 700;
+  background: var(--text-gradient-yellow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.typewriter-text {
+  display: inline;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--orange-yellow-crayola);
+  letter-spacing: 0.5px;
+}
+
+.typewriter-cursor {
+  display: inline;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--orange-yellow-crayola);
+  animation: blink-cursor 0.8s step-end infinite;
+  margin-left: 1px;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}

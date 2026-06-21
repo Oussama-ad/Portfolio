@@ -1,7 +1,56 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+// Roles to cycle through
+const ROLES = ['Full Stack Developer', 'AI Enthusiast', 'Backend Engineer', 'CS Student @ ESI']
+
+// Typewriter hook — fixed off-by-one: displayed is computed from state, not inside timeout
+function useTypewriter(texts, typingSpeed = 80, deletingSpeed = 45, pauseMs = 1800) {
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [charIndex, setCharIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [isPausing, setIsPausing] = useState(false)
+
+  useEffect(() => {
+    const current = texts[roleIndex]
+
+    // Pause after full word is typed
+    if (isPausing) {
+      const t = setTimeout(() => {
+        setIsPausing(false)
+        setIsDeleting(true)
+      }, pauseMs)
+      return () => clearTimeout(t)
+    }
+
+    if (!isDeleting) {
+      if (charIndex < current.length) {
+        // Still typing
+        const t = setTimeout(() => setCharIndex((c) => c + 1), typingSpeed)
+        return () => clearTimeout(t)
+      } else {
+        // Finished typing — start pause
+        setIsPausing(true)
+      }
+    } else {
+      if (charIndex > 0) {
+        // Still deleting
+        const t = setTimeout(() => setCharIndex((c) => c - 1), deletingSpeed)
+        return () => clearTimeout(t)
+      } else {
+        // Finished deleting — move to next role
+        setIsDeleting(false)
+        setRoleIndex((r) => (r + 1) % texts.length)
+      }
+    }
+  }, [charIndex, isDeleting, isPausing, roleIndex, texts, typingSpeed, deletingSpeed, pauseMs])
+
+  // Displayed text is derived directly — no stale closure issue
+  return texts[roleIndex].slice(0, charIndex)
+}
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
+  const role = useTypewriter(ROLES)
 
   return (
     <aside className={`sidebar${isOpen ? ' active' : ''}`} data-sidebar>
@@ -10,8 +59,14 @@ function Sidebar() {
           <img src="/assets/download.png" alt="Admane Mohamed Oussama" width="80" />
         </figure>
         <div className="info-content">
-          <h1 className="name" title="Admane Mohamed Oussama">Admane Mohamed Oussama</h1>
-          <p className="title">Full Stack Developer</p>
+          <h1 className="name" title="Admane Mohamed Oussama">
+            <span className="name-line">Admane</span>
+            <span className="name-line name-line--highlight">Mohamed Oussama</span>
+          </h1>
+          <p className="title">
+            <span className="typewriter-text">{role}</span>
+            <span className="typewriter-cursor">|</span>
+          </p>
         </div>
       </div>
 
