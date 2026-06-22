@@ -50,7 +50,7 @@ function About() {
                 <ion-icon
                   name={icon}
                   size="large"
-                  style={{ color: 'var(--orange-yellow-crayola)' }}
+                  style={{ color: 'hsl(200, 100%, 72%)' }}
                 ></ion-icon>
               </div>
               <div className="service-content-box">

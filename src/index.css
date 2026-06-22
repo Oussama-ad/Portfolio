@@ -7,26 +7,26 @@
  */
 
 :root {
-  /* colors */
-  --bg-gradient-jet: linear-gradient(to bottom right, hsla(240, 1%, 18%, 1) 0%, hsla(240, 2%, 11%, 1) 100%);
-  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%);
-  --bg-gradient-yellow-1: linear-gradient(to bottom right, hsl(45, 100%, 72%) 0%, hsla(35, 100%, 68%, 0) 50%);
-  --bg-gradient-yellow-2: linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 59.86%), hsl(240, 2%, 13%);
-  --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
-  --text-gradient-yellow: linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%));
+  /* ❄️ Winter Ice Palette — replaces gold */
+  --bg-gradient-jet: linear-gradient(to bottom right, hsla(220, 15%, 13%, 1) 0%, hsla(220, 20%, 8%, 1) 100%);
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(215, 15%, 20%) 3%, hsl(215, 10%, 14%) 97%);
+  --bg-gradient-yellow-1: linear-gradient(to bottom right, hsl(200, 100%, 75%) 0%, hsla(210, 100%, 70%, 0) 50%);
+  --bg-gradient-yellow-2: linear-gradient(135deg, hsla(200, 100%, 72%, 0.18) 0%, hsla(210, 100%, 68%, 0) 59.86%), hsl(220, 15%, 10%);
+  --border-gradient-onyx: linear-gradient(to bottom right, hsl(210, 25%, 30%) 0%, hsla(210, 25%, 30%, 0) 50%);
+  --text-gradient-yellow: linear-gradient(to right, hsl(200, 100%, 80%), hsl(190, 100%, 70%));
 
-  --jet: hsl(240, 2%, 13%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black-1: hsl(240, 2%, 12%);
-  --eerie-black-2: hsl(240, 2%, 10%);
-  --smoky-black: hsl(0, 0%, 7%);
+  --jet: hsl(220, 15%, 11%);
+  --onyx: hsl(215, 12%, 14%);
+  --eerie-black-1: hsl(220, 15%, 10%);
+  --eerie-black-2: hsl(220, 18%, 8%);
+  --smoky-black: hsl(220, 20%, 5%);
   --white-1: hsl(0, 0%, 100%);
   --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
+  --orange-yellow-crayola: hsl(200, 100%, 72%);
+  --vegas-gold: hsl(200, 80%, 55%);
+  --light-gray: hsl(210, 15%, 80%);
+  --light-gray-70: hsla(210, 15%, 80%, 0.7);
+  --bittersweet-shimmer: hsl(200, 60%, 45%);
 
   /* typography */
   --ff-inter: 'Inter', sans-serif;
@@ -217,7 +217,8 @@ body {
 
 .info-content {
   flex-grow: 1;
-  min-width: 0; /* Allows text to wrap/shrink properly in flex */
+  min-width: 0;
+  /* Allows text to wrap/shrink properly in flex */
 }
 
 .avatar-box {
@@ -236,7 +237,8 @@ body {
 
 .info-content .title {
   color: var(--white-1);
-  background: var(--onyx);
+  background: hsla(200, 100%, 72%, 0.05);
+  border: 1px solid hsla(200, 100%, 72%, 0.2);
   font-size: var(--fs-8);
   font-weight: var(--fw-400);
   width: max-content;
@@ -508,8 +510,9 @@ article.active {
 
 .service-item {
   position: relative;
-  background: var(--bg-gradient-onyx);
-  padding: 25px;
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  padding: 28px 32px;
   border-radius: 20px;
   box-shadow: var(--shadow-2);
   z-index: 1;
@@ -517,6 +520,7 @@ article.active {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 20px;
+  min-height: 90px;
   transition: var(--transition-1);
 }
 
@@ -524,7 +528,7 @@ article.active {
   content: "";
   position: absolute;
   inset: 1px;
-  background: var(--bg-gradient-jet);
+  background: transparent; /* removed dark inner gradient */
   border-radius: inherit;
   z-index: -1;
 }
@@ -540,7 +544,8 @@ article.active {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--onyx);
+  background: hsla(200, 100%, 72%, 0.05);
+  border: 1px solid hsla(200, 100%, 72%, 0.2);
   border-radius: 12px;
   flex-shrink: 0;
 }
@@ -629,7 +634,7 @@ article.active {
     align-items: flex-start;
     gap: 15px;
   }
-  
+
   .resume-actions {
     flex-direction: column;
     width: 100%;
@@ -742,10 +747,11 @@ article.active {
 }
 
 .skills-item .title-wrapper data {
-  color: var(--orange-yellow-crayola);
+  color: hsl(200, 100%, 72%);
   font-size: var(--fs-7);
   font-weight: var(--fw-600);
-  background: var(--onyx);
+  background: hsla(200, 100%, 72%, 0.05);
+  border: 1px solid hsla(200, 100%, 72%, 0.2);
   padding: 2px 8px;
   border-radius: 6px;
 }
@@ -1475,7 +1481,7 @@ textarea.form-input {
     width: 100%;
     max-width: 520px;
     margin-inline: auto;
-    padding: 30px;
+    padding: 10px;
   }
 
   .sidebar {
@@ -1832,18 +1838,41 @@ textarea.form-input {
 }
 
 @keyframes exp-orbit {
-  0%   { transform: rotate(0deg)   translateX(95px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(95px) rotate(-360deg); }
+  0% {
+    transform: rotate(0deg) translateX(95px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(95px) rotate(-360deg);
+  }
 }
 
 @keyframes exp-pulse {
-  0%, 100% { transform: scale(1);    opacity: 1; }
-  50%      { transform: scale(1.05); opacity: 0.7; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
 }
 
 @keyframes exp-glow {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50%      { opacity: 1;   transform: scale(1.1); }
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
 
 /* Quadrants */
@@ -1860,8 +1889,14 @@ textarea.form-input {
   justify-self: center;
   align-items: flex-end;
 }
-.exp-top-left    { justify-content: flex-end;   }
-.exp-bottom-left { justify-content: flex-start; }
+
+.exp-top-left {
+  justify-content: flex-end;
+}
+
+.exp-bottom-left {
+  justify-content: flex-start;
+}
 
 /* RIGHT quadrants: centered in their column, tags aligned left (toward orb) */
 .exp-top-right,
@@ -1869,8 +1904,14 @@ textarea.form-input {
   justify-self: center;
   align-items: flex-start;
 }
-.exp-top-right    { justify-content: flex-end;   }
-.exp-bottom-right { justify-content: flex-start; }
+
+.exp-top-right {
+  justify-content: flex-end;
+}
+
+.exp-bottom-right {
+  justify-content: flex-start;
+}
 
 .exp-top-left .exp-tags,
 .exp-bottom-left .exp-tags {
@@ -1940,13 +1981,29 @@ textarea.form-input {
 }
 
 @keyframes green-pulse {
-  0%, 100% { box-shadow: 0 0 8px 3px rgba(34, 197, 94, 0.7); transform: scale(1); }
-  50%       { box-shadow: 0 0 14px 5px rgba(34, 197, 94, 1); transform: scale(1.2); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px 3px rgba(34, 197, 94, 0.7);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 14px 5px rgba(34, 197, 94, 1);
+    transform: scale(1.2);
+  }
 }
 
 @keyframes exp-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 /* Responsive – stack on mobile */
@@ -2080,8 +2137,13 @@ textarea.form-input {
 }
 
 @keyframes marquee-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ── ABOUT ME TEXT HIGHLIGHTS ── */
@@ -2162,12 +2224,21 @@ textarea.form-input {
 }
 
 @keyframes blink-cursor {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 /* ── CUSTOM CURSOR ── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   cursor: none !important;
 }
 
@@ -2252,8 +2323,13 @@ textarea.form-input {
 }
 
 @keyframes preloader-fall {
-  0%   { transform: translateY(-10px) rotate(0deg); }
-  100% { transform: translateY(110vh) rotate(360deg); }
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
 }
 
 /* Center stage */
@@ -2298,7 +2374,7 @@ textarea.form-input {
   color: var(--white-1);
   text-shadow:
     0 0 40px hsla(45, 100%, 72%, 0.15),
-    0 2px 0 rgba(0,0,0,0.4);
+    0 2px 0 rgba(0, 0, 0, 0.4);
   will-change: transform, opacity;
 }
 
@@ -2310,7 +2386,7 @@ textarea.form-input {
 .preloader-bar-track {
   width: min(480px, 80vw);
   height: 2px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   margin: 0 auto;
   border-radius: 2px;
   overflow: hidden;
@@ -2318,9 +2394,198 @@ textarea.form-input {
 
 .preloader-bar {
   height: 100%;
-  background: linear-gradient(to right, hsl(45,100%,72%), hsl(35,100%,68%));
+  background: linear-gradient(to right, hsl(200, 100%, 72%), hsl(190, 100%, 65%));
   border-radius: 2px;
-  box-shadow: 0 0 12px hsla(45,100%,72%,0.6);
+  box-shadow: 0 0 16px hsla(200, 100%, 72%, 0.7);
   will-change: transform;
 }
-
+
+/* ══════════════════════════════════════════
+   ❄️  WINTER FROST THEME — Ice & Snow Effects
+   ══════════════════════════════════════════ */
+
+/* Subtle deep-winter background tint on body */
+body {
+  background: radial-gradient(ellipse at 20% 0%, hsla(215, 60%, 8%, 0.9) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, hsla(200, 50%, 7%, 0.8) 0%, transparent 60%),
+    hsl(220, 20%, 6%);
+}
+
+/* ── Ice glow on selection ── */
+::selection {
+  background: hsla(200, 100%, 72%, 0.3);
+  color: var(--white-1);
+}
+
+/* ── Frosted glass base cards ── */
+.sidebar,
+.main-content>article {
+  position: relative;
+  overflow: visible;
+  /* ensure pseudo-elements can breathe */
+}
+
+/* Ice shimmer line across TOP of each main panel */
+.sidebar::before,
+.main-content>article.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      hsla(200, 100%, 85%, 0.45) 30%,
+      hsla(0, 0%, 100%, 0.85) 50%,
+      hsla(200, 100%, 85%, 0.45) 70%,
+      transparent 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Ice-blue glow border overlay on panels — above content */
+.sidebar::after,
+.main-content>article.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 1px solid hsla(200, 100%, 72%, 0.18);
+  box-shadow:
+    inset 0 1px 0 hsla(200, 100%, 90%, 0.07),
+    0 0 35px hsla(200, 100%, 72%, 0.07),
+    0 0 70px hsla(200, 100%, 72%, 0.03);
+  pointer-events: none;
+  z-index: 5;
+  /* above content but events blocked */
+}
+
+/* ── Ice shimmer on hover — service & project cards only ── */
+.service-item,
+.project-item {
+  position: relative;
+}
+
+.service-item:hover,
+.project-item:hover {
+  box-shadow:
+    var(--shadow-2),
+    0 0 22px hsla(200, 100%, 72%, 0.14),
+    0 0 44px hsla(200, 100%, 72%, 0.06);
+}
+
+/* ── Frosted sidebar background ── */
+.sidebar {
+  background: linear-gradient(to bottom right,
+      hsla(215, 20%, 14%, 0.98) 0%,
+      hsla(215, 15%, 10%, 0.98) 100%);
+  border: 1px solid hsla(200, 60%, 40%, 0.2);
+}
+
+/* ── Ice-colored nav active indicator ── */
+.navbar-link.active {
+  color: hsl(200, 100%, 75%) !important;
+  text-shadow: 0 0 10px hsla(200, 100%, 72%, 0.4);
+}
+
+/* ── Glowing ice dots on status indicators ── */
+.dot-glow {
+  box-shadow:
+    0 0 6px hsla(200, 100%, 72%, 0.9),
+    0 0 12px hsla(200, 100%, 72%, 0.6),
+    0 0 24px hsla(200, 100%, 72%, 0.3) !important;
+  background: hsl(200, 100%, 72%) !important;
+}
+
+/* ── Timeline ice-color bar ── */
+.timeline-item {
+  position: relative;
+}
+
+/* ── Scrollbar winter tint ── */
+::-webkit-scrollbar-thumb {
+  background: hsla(200, 60%, 40%, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsla(200, 80%, 50%, 0.7);
+}
+
+/* ── Frost vignette on page edges ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 100% 40% at 50% 0%, hsla(200, 80%, 90%, 0.025) 0%, transparent 100%),
+    radial-gradient(ellipse 100% 20% at 50% 100%, hsla(200, 60%, 80%, 0.03) 0%, transparent 100%);
+}
+
+/* ── Cert slider — preserve absolute positioning ── */
+.cert-slider-container {
+  position: relative;
+  z-index: 1;
+  /* ensure it stacks above vignette */
+}
+
+.cert-item {
+  position: absolute;
+  /* critical — restore for coverflow */
+}
+
+/* ══════════════════════════════════════════
+   ❄️  INNER CARD BREATHING ROOM FIXES
+   ══════════════════════════════════════════ */
+
+/* Service cards — content box fills remaining width, text wraps properly */
+.service-content-box {
+  flex: 1;
+  min-width: 0;
+}
+
+.service-item-text {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.7;
+}
+
+/* Project cards — footer content fills width */
+.project-content-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-title {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* Contact sidebar info wraps cleanly */
+.contact-info {
+  min-width: 0;
+}
+
+.contact-link,
+.contact-info address {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+/* Timeline text wraps cleanly */
+.timeline-text {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.timeline-item-title {
+  overflow-wrap: break-word;
+}
+
+/* Outer content panel — a touch more breathing room */
+.sidebar,
+.main-content {
+  padding: 35px;
+}
