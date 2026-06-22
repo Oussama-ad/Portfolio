@@ -14,10 +14,10 @@ const SNOW = Array.from({ length: 50 }, (_, i) => ({
 const TITLE_CHARS = 'WINTER IS COMING'.split('')
 
 function Preloader({ onComplete }) {
-  const overlayRef  = useRef(null)
-  const lineRef     = useRef(null)
-  const charsRef    = useRef([])
-  const barRef      = useRef(null)
+  const overlayRef = useRef(null)
+  const lineRef = useRef(null)
+  const charsRef = useRef([])
+  const barRef = useRef(null)
   const subtitleRef = useRef(null)
 
   useEffect(() => {
@@ -87,7 +87,7 @@ function Preloader({ onComplete }) {
 
         {/* Sub-label */}
         <p ref={subtitleRef} className="preloader-subtitle">
-          Portfolio&nbsp;&bull;&nbsp;2025
+          Portfolio&nbsp;&bull;&nbsp;2026
         </p>
 
         {/* Main title — perspective for 3-D flip */}

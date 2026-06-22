@@ -528,7 +528,8 @@ article.active {
   content: "";
   position: absolute;
   inset: 1px;
-  background: transparent; /* removed dark inner gradient */
+  background: transparent;
+  /* removed dark inner gradient */
   border-radius: inherit;
   z-index: -1;
 }
@@ -1603,7 +1604,7 @@ textarea.form-input {
     position: sticky;
     top: 15px;
     max-height: max-content;
-    height: 100%;
+    height: max-content;
     margin-bottom: 0;
     padding: 30px;
     z-index: 1;
@@ -1656,7 +1657,6 @@ textarea.form-input {
     padding: 30px;
     padding-top: 50px;
     position: relative;
-    min-height: calc(100vh - 30px);
   }
 
   /* Articles padding */
