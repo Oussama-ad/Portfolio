@@ -1656,6 +1656,7 @@ textarea.form-input {
     padding: 30px;
     padding-top: 50px;
     position: relative;
+    min-height: calc(100vh - 30px);
   }
 
   /* Articles padding */
@@ -2419,15 +2420,14 @@ body {
 
 /* ── Frosted glass base cards ── */
 .sidebar,
-.main-content>article {
+.main-content {
   position: relative;
   overflow: visible;
-  /* ensure pseudo-elements can breathe */
 }
 
 /* Ice shimmer line across TOP of each main panel */
 .sidebar::before,
-.main-content>article.active::before {
+.main-content::before {
   content: '';
   position: absolute;
   top: 0;
@@ -2446,7 +2446,7 @@ body {
 
 /* Ice-blue glow border overlay on panels — above content */
 .sidebar::after,
-.main-content>article.active::after {
+.main-content::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -2458,7 +2458,6 @@ body {
     0 0 70px hsla(200, 100%, 72%, 0.03);
   pointer-events: none;
   z-index: 5;
-  /* above content but events blocked */
 }
 
 /* ── Ice shimmer on hover — service & project cards only ── */
