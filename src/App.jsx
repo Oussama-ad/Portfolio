@@ -10,6 +10,7 @@ import ProjectModal from './components/ProjectModal'
 import Snowfall from './components/Snowfall'
 import CustomCursor from './components/CustomCursor'
 import Preloader from './components/Preloader'
+import NiroAssistant from './components/NiroAssistant'
 
 function App() {
   const [activePage, setActivePage] = useState('about')
@@ -52,6 +53,8 @@ function App() {
       {modalData && (
         <ProjectModal data={modalData} onClose={() => setModalData(null)} />
       )}
+
+      <NiroAssistant isAppLoaded={!loading} />
     </>
   )
 }
