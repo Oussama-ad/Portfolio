@@ -22,6 +22,17 @@ const ALL_PROJECTS = [
     github: '',
     live: 'https://epicesroyal.vercel.app/',
   },
+  {
+    title: 'Niro AI Assistant',
+    category: 'Applications',
+    filterKey: 'applications',
+    img: '/assets/niro.png',
+    alt: 'Niro AI Assistant',
+    desc: 'Niro is a sophisticated RAG (Retrieval-Augmented Generation) virtual assistant powered by Google\'s Gemini model. Built to serve as an intelligent, context-aware guide, it can answer specific questions by dynamically retrieving relevant information. The system features a robust backend for rapid inference and seamless integration into modern web interfaces.',
+    tech: ['FastAPI', 'Gemini AI', 'Python', 'React'],
+    github: 'https://github.com/Oussama-ad/Niro',
+    live: '',
+  },
 ]
 
 const FILTER_BTNS = ['All', 'Web design', 'Applications', 'Web development']
