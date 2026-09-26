@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 function ProjectModal({ data, onClose }) {
-  const { title, category, img, alt, desc, tech, github, live } = data
+  if (!data) return null
+  const { title, category, img, alt, desc, tech = [], github, live } = data
 
   // Close on Escape key
   useEffect(() => {
@@ -16,13 +18,13 @@ function ProjectModal({ data, onClose }) {
     }
   }, [onClose])
 
-  return (
+  return createPortal(
     <div
       className="project-modal-overlay active"
       id="projectModal"
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
-      <div className="project-modal">
+      <div className="project-modal" onClick={(e) => e.stopPropagation()}>
         <button className="project-modal-close" onClick={onClose} id="projectModalClose">
           <ion-icon name="close-outline"></ion-icon>
         </button>
@@ -67,19 +69,30 @@ function ProjectModal({ data, onClose }) {
                 <span>Source Code</span>
               </a>
             )}
-            <a
-              href={live}
-              className="project-modal-btn project-modal-btn-live"
-              target="_blank"
-              rel="noreferrer"
+            {live && live !== '#' && (
+              <a
+                href={live}
+                className="project-modal-btn project-modal-btn-live"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ion-icon name="link-outline"></ion-icon>
+                <span>Live Demo</span>
+              </a>
+            )}
+            <button
+              type="button"
+              className="project-modal-btn project-modal-btn-ghost"
+              onClick={onClose}
             >
-              <ion-icon name="link-outline"></ion-icon>
-              <span>Live Demo</span>
-            </a>
+              <ion-icon name="close-circle-outline"></ion-icon>
+              <span>Close Window</span>
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 

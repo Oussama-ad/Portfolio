@@ -2,9 +2,84 @@ import { useState } from 'react'
 
 const ALL_PROJECTS = [
   {
+    title: 'Credit Card Fraud Detection',
+    category: 'Machine Learning & Imbalanced Classification',
+    filterKey: 'ai',
+    badge: 'AUPRC 0.89 • XGBoost + SMOTE',
+    img: '/assets/Projects/card_fraud.jpg',
+    alt: 'Credit Card Fraud Detection Benchmark',
+    desc: `🚀 Credit Card Fraud Detection — My First Steps into Imbalanced Classification
+
+As part of my journey into Machine Learning, I recently worked on a Credit Card Fraud Detection project.
+One of the main challenges was the severe class imbalance in the dataset: only 492 out of 284,807 transactions were fraudulent (~0.17%).
+
+📊 Model Progression & Iterations:
+• Random Forest (class_weight="balanced") → AUPRC: 0.69
+• Random Forest + SMOTE → AUPRC: 0.74
+• XGBoost + SMOTE → AUPRC: 0.89
+
+Along the way, I learned how to analyze a confusion matrix (TP, TN, FP, FN) and, more importantly, why accuracy alone can be misleading when dealing with highly imbalanced datasets.
+
+Key Metrics Evaluated:
+🔹 Precision
+🔹 Recall
+🔹 F1-score
+🔹 AUPRC (Area Under Precision-Recall Curve)
+🔹 Confusion Matrix
+
+This project taught me that evaluating a Machine Learning model isn't just about getting the highest accuracy — it's about understanding what the model is actually doing and choosing the right metrics for the problem.`,
+    tech: ['Python', 'Scikit-Learn', 'XGBoost', 'SMOTE', 'Pandas', 'NumPy', 'Matplotlib'],
+    github: '',
+    live: '',
+  },
+  {
+    title: 'Real-Time Hand Gesture Recognition',
+    category: 'Computer Vision & Real-Time ML',
+    filterKey: 'ai',
+    badge: '89% Accuracy • MediaPipe & KNN',
+    img: '/assets/Projects/hand_gesture.png',
+    alt: 'Real-Time Hand Gesture Recognition Pipeline',
+    desc: `🖐️ Real-Time Hand Gesture Recognition System
+
+Built a complete real-time computer vision and machine learning pipeline from data collection to live webcam inference.
+
+I built a custom dataset using OpenCV and MediaPipe by capturing hand landmark coordinates in real time through my webcam for 5 different gesture classes: thumbs up, high five, OK, two, and rest.
+
+I then trained a K-Nearest Neighbors (KNN) classifier using scikit-learn.
+My initial accuracy was around 73%, so I started iterating:
+• Collected more diverse samples for each gesture
+• Applied PCA to reduce the feature space from 63 dimensions to 9
+• Used cross-validation to properly tune the value of k
+
+📈 Reliable Performance:
+After these improvements, I achieved a reliable accuracy of approximately 89%.
+
+💻 Live Inference Application:
+Built a real-time detection pipeline where the trained model runs on the webcam feed, recognizes hand gestures, and triggers corresponding images on the screen.
+
+It was deeply rewarding to see the complete machine learning pipeline working end-to-end: from collecting and preprocessing custom data, to training and evaluating the model, and using it in an interactive real-time application.
+
+🛠️ Tools used: Python, OpenCV, MediaPipe, and scikit-learn.`,
+    tech: ['Python', 'OpenCV', 'MediaPipe', 'Scikit-Learn', 'PCA', 'KNN'],
+    github: '',
+    live: '',
+  },
+  {
+    title: 'Niro AI Assistant',
+    category: 'AI & Conversational Systems',
+    filterKey: 'ai',
+    badge: 'RAG Architecture',
+    img: '/assets/niro.png',
+    alt: 'Niro AI Assistant Preview',
+    desc: 'Niro is an advanced RAG (Retrieval-Augmented Generation) AI assistant. Built as an intelligent conversational guide, it dynamically queries indexed contextual embeddings to provide accurate, real-time answers. Features an asynchronous FastAPI backend for rapid low-latency inference and smooth web integration.',
+    tech: ['FastAPI', 'Python', 'React', 'RAG Pipelines', 'HuggingFace'],
+    github: 'https://github.com/Oussama-ad/Niro',
+    live: 'https://ouss-ad85-niro-home.hf.space/',
+  },
+  {
     title: 'SmartSchool',
     category: 'Full Stack Web Platform',
-    filterKey: 'web development',
+    filterKey: 'web',
     badge: 'Team Lead & Backend',
     img: '/assets/Projects/smart-school.png',
     alt: 'SmartSchool Platform Preview',
@@ -16,7 +91,7 @@ const ALL_PROJECTS = [
   {
     title: 'Epicerie Royale Online',
     category: 'Modern E-Commerce',
-    filterKey: 'web development',
+    filterKey: 'web',
     badge: 'Production Web App',
     img: '/assets/Projects/epice.png',
     alt: 'Epicerie Royale Online Preview',
@@ -25,24 +100,12 @@ const ALL_PROJECTS = [
     github: '',
     live: 'https://epicesroyal.vercel.app/',
   },
-  {
-    title: 'Niro AI Assistant',
-    category: 'AI & Applications',
-    filterKey: 'applications',
-    badge: 'RAG Architecture',
-    img: '/assets/niro.png',
-    alt: 'Niro AI Assistant Preview',
-    desc: 'Niro is an advanced RAG (Retrieval-Augmented Generation) AI assistant. Built as an intelligent conversational guide, it dynamically queries indexed contextual embeddings to provide accurate, real-time answers. Features an asynchronous FastAPI backend for rapid low-latency inference and smooth web integration.',
-    tech: ['FastAPI', 'Python', 'React', 'RAG Pipelines', 'HuggingFace'],
-    github: 'https://github.com/Oussama-ad/Niro',
-    live: 'https://ouss-ad85-niro-home.hf.space/',
-  },
 ]
 
 const FILTER_BTNS = [
   { label: 'All Quests', key: 'all' },
-  { label: 'Web Applications', key: 'web development' },
-  { label: 'AI & Systems', key: 'applications' },
+  { label: 'AI & Machine Learning', key: 'ai' },
+  { label: 'Web Applications', key: 'web' },
 ]
 
 function Projects({ onOpenModal }) {
