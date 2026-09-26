@@ -5,7 +5,7 @@ const NiroAssistant = ({ isAppLoaded }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [messages, setMessages] = useState([
-    { sender: 'niro', text: 'hello am niro oussama personal assistant how can i help you' }
+    { sender: 'niro', text: 'Hello am Niro Oussama  personal assistant ! How can i help you ?' }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -60,7 +60,7 @@ const NiroAssistant = ({ isAppLoaded }) => {
       }
 
       const data = await response.json();
-      setMessages((prev) => [...prev, { sender: 'niro', text: data.response }]);
+      setMessages((prev) => [...prev, { sender: 'niro', text: data.answer }]);
     } catch (error) {
       console.error('Error fetching from Niro:', error);
       setMessages((prev) => [...prev, { sender: 'niro', text: 'Sorry, I encountered an error. Please try again.' }]);
