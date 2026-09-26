@@ -1,61 +1,100 @@
-const SERVICES = [
+const PILLARS = [
   {
     icon: 'code-working-outline',
-    title: 'Fullstack Development',
-    text: 'Building robust, scalable, and professional web applications from end-to-end.',
+    title: 'Fullstack Architecture',
+    tag: 'Web & Distributed Systems',
+    text: 'Forging scalable, high-throughput web applications with React, Next.js, Node.js, and FastAPI. From reactive interfaces to resilient backends.',
   },
   {
     icon: 'hardware-chip-outline',
-    title: 'AI & Machine Learning',
-    text: 'Building predictive models, natural language processing solutions, and data-driven insights.',
+    title: 'AI & Neural Systems',
+    tag: 'RAG & Deep Learning',
+    text: 'Architecting intelligent pipelines, contextual RAG agents, and predictive machine learning models built with PyTorch and Scikit-learn.',
   },
   {
     icon: 'shield-checkmark-outline',
-    title: 'Cyber Security',
-    text: 'Ensuring application security through robust coding practices and vulnerability analysis.',
+    title: 'Cyber Security & Hardening',
+    tag: 'AppSec & Low-Level',
+    text: 'Enforcing security-first development, vulnerability mitigation, authorization protocols, and robust low-level system integrity.',
   },
   {
     icon: 'server-outline',
-    title: 'DevOps & Cloud',
-    text: 'Automating deployment pipelines and managing scalable infrastructure using Docker and AWS.',
+    title: 'DevOps & Cloud Crucible',
+    tag: 'Containerization & CI/CD',
+    text: 'Automating pipelines, Docker microservices containerization, Linux server orchestration, and reliable cloud deployments.',
   },
+]
+
+const STATS = [
+  { label: 'Academic Citadel', value: 'ESI Algiers', sub: 'Top CS Institute' },
+  { label: 'Primary Weaponry', value: 'MERN & Python', sub: 'Full Stack & AI' },
+  { label: 'Architected Projects', value: '3+ Shipped', sub: 'Full Cycle Apps' },
+  { label: 'Current Quest', value: 'Engineering 2029', sub: 'Distributed & AI' },
 ]
 
 function About() {
   return (
     <>
-      <header>
-        <h2 className="h2 article-title">About me</h2>
+      <header className="page-header">
+        <div className="header-badge">
+          <span className="badge-frost-icon">❄</span>
+          <span>CHRONICLE OF THE ENGINEER</span>
+        </div>
+        <h2 className="h2 article-title">About Me</h2>
+        <div className="title-valyrian-line">
+          <span className="line-diamond"></span>
+        </div>
       </header>
 
+      {/* Hero Stat Pills */}
+      <section className="hero-stats-grid">
+        {STATS.map(({ label, value, sub }) => (
+          <div className="hero-stat-card" key={label}>
+            <span className="stat-label">{label}</span>
+            <span className="stat-value">{value}</span>
+            <span className="stat-sub">{sub}</span>
+          </div>
+        ))}
+      </section>
+
+      {/* Main Narrative */}
       <section className="about-text animate-fade-in-up">
-        <p>
-          I'm a <span className="text-highlight highlight-gold">Computer Science Engineering</span> student from <span className="text-highlight highlight-gold">Algeria</span>, passionate about turning
-          complex problems into simple, efficient, and well-engineered solutions. I work across
-          the full stack, but I have a strong preference for <span className="text-highlight highlight-gold">Backend Development</span> and <span className="text-highlight highlight-gold">AI/ML</span>, with
-          a keen interest in <span className="text-highlight highlight-gold">Cyber Security</span> and <span className="text-highlight highlight-gold">low-level systems programming</span>.
+        <p className="lead-paragraph">
+          I am a <strong className="text-glow">Computer Science Engineering student</strong> at the prestigious{' '}
+          <span className="text-highlight">École nationale Supérieure d'Informatique (ESI)</span> in Algeria.
+          Guided by the resilience of the North, I forge digital systems that turn intricate problems into elegant,
+          bulletproof, and performant digital realities.
         </p>
+
         <p>
-          My goal is to build applications that are not only functional and user-friendly but also
-          secure and visually appealing. I enjoy <span className="text-highlight highlight-gold">team working</span> and I'm always eager to learn new technologies to stay ahead in the field.
+          While comfortable across the entire stack, my core mastery lies in <span className="text-highlight">Backend Architecture</span>,{' '}
+          <span className="text-highlight">AI & RAG Systems</span>, and rigorous <span className="text-highlight">Cyber Security</span>.
+          From engineering school management ERPs to building custom intelligent assistants, I engineer software built to withstand heavy traffic and hostile environments.
         </p>
       </section>
 
+      {/* The Four Northern Pillars / Services */}
       <section className="service">
-        <h3 className="h3 service-title">What i'm doing</h3>
+        <div className="section-title-wrapper">
+          <h3 className="h3 service-title">Forging & Capabilities</h3>
+          <span className="section-subtitle">Core areas of engineering expertise</span>
+        </div>
+
         <ul className="service-list">
-          {SERVICES.map(({ icon, title, text }) => (
+          {PILLARS.map(({ icon, title, tag, text }) => (
             <li className="service-item" key={title}>
-              <div className="service-icon-box">
-                <ion-icon
-                  name={icon}
-                  size="large"
-                  style={{ color: 'hsl(200, 100%, 72%)' }}
-                ></ion-icon>
-              </div>
-              <div className="service-content-box">
-                <h4 className="h4 service-item-title">{title}</h4>
-                <p className="service-item-text">{text}</p>
+              <div className="service-card-inner">
+                <div className="service-header-row">
+                  <div className="service-icon-box">
+                    <ion-icon name={icon}></ion-icon>
+                  </div>
+                  <span className="service-tag">{tag}</span>
+                </div>
+                <div className="service-content-box">
+                  <h4 className="h4 service-item-title">{title}</h4>
+                  <p className="service-item-text">{text}</p>
+                </div>
+                <div className="card-frost-accent"></div>
               </div>
             </li>
           ))}

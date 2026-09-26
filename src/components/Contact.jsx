@@ -1,18 +1,46 @@
 import { useState, useRef } from 'react'
 
 const SOCIAL_LINKS = [
-  { href: 'https://github.com/', icon: 'logo-github', label: 'GitHub' },
-  { href: 'https://www.linkedin.com/in/akhileswar-kamale/', icon: 'logo-linkedin', label: 'LinkedIn' },
-  { href: 'https://leetcode.com/', icon: 'code-slash-outline', label: 'LeetCode' },
+  {
+    href: 'https://github.com/Oussama-ad',
+    icon: 'logo-github',
+    label: 'GitHub',
+    detail: '@Oussama-ad',
+  },
+  {
+    href: 'https://www.linkedin.com/in/admane-mohamed-oussama-357296357/',
+    icon: 'logo-linkedin',
+    label: 'LinkedIn',
+    detail: 'Mohamed Oussama Admane',
+  },
+  {
+    href: 'https://leetcode.com/u/SwzasQnqQN/',
+    icon: 'code-slash-outline',
+    label: 'LeetCode',
+    detail: 'Algorithmic Problem Solving',
+  },
 ]
 
 function Contact() {
   const formRef = useRef(null)
   const [btnState, setBtnState] = useState('idle') // idle | sending | success | error
   const [isValid, setIsValid] = useState(false)
+  const [copiedEmail, setCopiedEmail] = useState(false)
+  const [copiedPhone, setCopiedPhone] = useState(false)
 
   const handleInput = () => {
     setIsValid(formRef.current?.checkValidity() ?? false)
+  }
+
+  const copyToClipboard = (text, type) => {
+    navigator.clipboard.writeText(text)
+    if (type === 'email') {
+      setCopiedEmail(true)
+      setTimeout(() => setCopiedEmail(false), 2200)
+    } else {
+      setCopiedPhone(true)
+      setTimeout(() => setCopiedPhone(false), 2200)
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -28,7 +56,7 @@ function Contact() {
         headers: { Accept: 'application/json' },
       })
 
-      if (!res.ok) throw new Error('Failed')
+      if (!res.ok) throw new Error('Failed to send raven')
 
       setBtnState('success')
       formRef.current.reset()
@@ -43,103 +71,208 @@ function Contact() {
   const btnContent = {
     idle: (
       <>
-        <ion-icon name="paper-plane"></ion-icon>
-        <span>Send Message</span>
+        <ion-icon name="paper-plane-outline"></ion-icon>
+        <span>Send Raven / Message</span>
       </>
     ),
     sending: (
       <>
-        <ion-icon name="sync-outline" class="rotating"></ion-icon>
-        <span>Sending...</span>
+        <ion-icon name="sync-outline" className="rotating-icon"></ion-icon>
+        <span>Dispatching Raven...</span>
       </>
     ),
     success: (
       <>
-        <ion-icon name="checkmark-done-outline"></ion-icon>
-        <span>Message Sent!</span>
+        <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+        <span>Raven Dispatched Successfully!</span>
       </>
     ),
     error: (
       <>
         <ion-icon name="alert-circle-outline"></ion-icon>
-        <span>Error! Try again.</span>
+        <span>Transmission Failed. Please retry.</span>
       </>
     ),
   }
 
   return (
     <>
-      <header>
-        <h2 className="h2 article-title">Contact</h2>
+      <header className="page-header">
+        <div className="header-badge">
+          <span className="badge-frost-icon">✉</span>
+          <span>DISPATCH A RAVEN</span>
+        </div>
+        <h2 className="h2 article-title">Get in Touch</h2>
+        <div className="title-valyrian-line">
+          <span className="line-diamond"></span>
+        </div>
       </header>
 
-      <section className="contact-form">
-        <h3 className="h3 form-title">Contact Form</h3>
+      {/* Direct Contact Cards */}
+      <section className="contact-quick-cards">
+        <div className="quick-card">
+          <div className="quick-card-icon">
+            <ion-icon name="mail-outline"></ion-icon>
+          </div>
+          <div className="quick-card-info">
+            <span className="quick-label">Official Email</span>
+            <a href="mailto:om_admane@esi.dz" className="quick-value">
+              om_admane@esi.dz
+            </a>
+          </div>
+          <button
+            type="button"
+            className="quick-copy-action"
+            onClick={() => copyToClipboard('om_admane@esi.dz', 'email')}
+            title="Copy email address"
+          >
+            <ion-icon name={copiedEmail ? 'checkmark-outline' : 'copy-outline'}></ion-icon>
+            <span className="copy-label">{copiedEmail ? 'Copied!' : 'Copy'}</span>
+          </button>
+        </div>
+
+        <div className="quick-card">
+          <div className="quick-card-icon">
+            <ion-icon name="call-outline"></ion-icon>
+          </div>
+          <div className="quick-card-info">
+            <span className="quick-label">Direct Line</span>
+            <a href="tel:+213556754220" className="quick-value">
+              +213 556 75 42 20
+            </a>
+          </div>
+          <button
+            type="button"
+            className="quick-copy-action"
+            onClick={() => copyToClipboard('+213556754220', 'phone')}
+            title="Copy phone number"
+          >
+            <ion-icon name={copiedPhone ? 'checkmark-outline' : 'copy-outline'}></ion-icon>
+            <span className="copy-label">{copiedPhone ? 'Copied!' : 'Copy'}</span>
+          </button>
+        </div>
+
+        <div className="quick-card">
+          <div className="quick-card-icon">
+            <ion-icon name="location-outline"></ion-icon>
+          </div>
+          <div className="quick-card-info">
+            <span className="quick-label">Realm & Base</span>
+            <span className="quick-value">Algiers, Algeria (ESI)</span>
+          </div>
+          <span className="status-pill-online">
+            <span className="online-indicator"></span> Available
+          </span>
+        </div>
+      </section>
+
+      {/* Main Interactive Form */}
+      <section className="contact-form-section">
+        <div className="section-title-wrapper">
+          <h3 className="h3 form-title">Dispatch Your Message</h3>
+          <span className="section-subtitle">
+            Whether inquiring about software engineering, AI collaborations, or opportunities.
+          </span>
+        </div>
+
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="form"
-          data-form
+          className="valyrian-form"
         >
-          <div className="input-wrapper">
-            <input
-              type="text"
-              name="fullname"
-              className="form-input"
-              placeholder="Full name"
-              required
-              onInput={handleInput}
-              data-form-input
-            />
-            <input
-              type="email"
-              name="email"
-              className="form-input"
-              placeholder="Email address"
-              required
-              onInput={handleInput}
-              data-form-input
-            />
+          <div className="form-input-grid">
+            <div className="form-group">
+              <label htmlFor="fullname" className="form-label">
+                Your Noble Name
+              </label>
+              <div className="input-with-icon">
+                <ion-icon name="person-outline"></ion-icon>
+                <input
+                  id="fullname"
+                  type="text"
+                  name="fullname"
+                  className="modern-input"
+                  placeholder="e.g. Jon Snow"
+                  required
+                  onInput={handleInput}
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email" className="form-label">
+                Raven Transmission (Email)
+              </label>
+              <div className="input-with-icon">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  className="modern-input"
+                  placeholder="e.g. lord@winterfell.org"
+                  required
+                  onInput={handleInput}
+                />
+              </div>
+            </div>
           </div>
-          <textarea
-            name="message"
-            className="form-input"
-            placeholder="Your Message"
-            required
-            onInput={handleInput}
-            data-form-input
-          ></textarea>
+
+          <div className="form-group">
+            <label htmlFor="message" className="form-label">
+              Your Message / Mission
+            </label>
+            <div className="textarea-with-icon">
+              <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+              <textarea
+                id="message"
+                name="message"
+                className="modern-textarea"
+                placeholder="Write your parchment here..."
+                rows="5"
+                required
+                onInput={handleInput}
+              ></textarea>
+            </div>
+          </div>
 
           <button
-            className="form-btn"
+            className={`valyrian-submit-btn ${btnState !== 'idle' ? `btn-${btnState}` : ''}`}
             type="submit"
             disabled={!isValid || btnState === 'sending'}
-            style={
-              btnState === 'success'
-                ? { backgroundColor: 'var(--orange-yellow-crayola)', color: 'var(--smoky-black)' }
-                : {}
-            }
-            data-form-btn
           >
             {btnContent[btnState]}
           </button>
         </form>
       </section>
 
-      <div className="separator"></div>
+      {/* Social Network Links */}
+      <section className="contact-social-section">
+        <div className="section-title-wrapper">
+          <h3 className="h3 form-title">Digital Citadels & Profiles</h3>
+          <span className="section-subtitle">Follow Oussama across the digital realm</span>
+        </div>
 
-      <section className="contact-social">
-        <h3 className="h3 form-title">Connect with me</h3>
-        <ul className="social-list">
-          {SOCIAL_LINKS.map(({ href, icon, label }) => (
-            <li className="social-item" key={label}>
-              <a href={href} className="social-link" target="_blank" rel="noreferrer">
+        <div className="social-cards-grid">
+          {SOCIAL_LINKS.map(({ href, icon, label, detail }) => (
+            <a
+              href={href}
+              className="social-profile-card"
+              target="_blank"
+              rel="noreferrer"
+              key={label}
+            >
+              <div className="social-card-icon">
                 <ion-icon name={icon}></ion-icon>
-                <span>{label}</span>
-              </a>
-            </li>
+              </div>
+              <div className="social-card-text">
+                <h4 className="social-card-label">{label}</h4>
+                <span className="social-card-detail">{detail}</span>
+              </div>
+              <ion-icon name="arrow-forward-outline" className="social-arrow"></ion-icon>
+            </a>
           ))}
-        </ul>
+        </div>
       </section>
     </>
   )
