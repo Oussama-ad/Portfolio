@@ -2635,11 +2635,17 @@ article.active {
 @media (max-width: 900px) {
   body {
     padding: 16px 12px 90px;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   main {
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
   }
 
   /* Full width mobile sidebar */
@@ -2721,64 +2727,176 @@ article.active {
   }
 
   .main-content {
-    padding: 24px 18px;
+    padding: 24px 14px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  article {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
   }
 
   .service-list {
     grid-template-columns: 1fr;
   }
 
-  .certifications-grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* ── Certifications Mobile Constraints (Fix image blowout) ── */
+  .certifications-section {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
   }
 
-  /* Experience Hub Responsive */
+  .certifications-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .cert-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .cert-preview-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .cert-preview-frame img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* ── Tools Inventory Marquee Mobile Constraints ── */
+  .tools-inventory-section {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 16px 14px;
+    overflow: hidden;
+  }
+
+  .tools-marquee-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* ── Experience Hub Responsive Mobile Overhaul ── */
   .experience-hub {
-    padding: 28px 16px;
+    padding: 24px 14px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .experience-hub::before {
+    width: 280px;
+    height: 280px;
   }
 
   .exp-hub-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 20px;
     min-height: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 
+  /* Central Valyrian Core Orb at Top */
   .exp-center {
     position: relative;
     top: auto;
     left: auto;
     transform: none;
-    margin: 14px 0 20px;
-    width: 156px;
-    height: 156px;
+    margin: 8px auto 16px;
+    width: 136px;
+    height: 136px;
     order: -1;
+    flex-shrink: 0;
   }
 
+  .exp-orbit-track {
+    inset: -10px;
+  }
+
+  /* Skill Quadrant Cards */
   .exp-quadrant {
+    display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
     justify-self: center !important;
-    max-width: 100%;
-    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 16px 12px !important;
     margin: 0 !important;
+    background: rgba(14, 23, 44, 0.45);
+    border: 1px solid rgba(148, 197, 255, 0.12);
+    border-radius: var(--radius-md);
+    gap: 10px;
+  }
+
+  .exp-quadrant-label {
+    order: -1;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    margin: 0 0 2px 0;
+    text-align: center;
   }
 
   .exp-quadrant-rows {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 8px;
     width: 100%;
   }
 
   .exp-row {
+    display: flex;
     justify-content: center !important;
+    align-items: center;
     flex-wrap: wrap;
     gap: 8px;
+    width: 100%;
   }
 
   .exp-tag {
-    font-size: 12px;
-    padding: 6px 14px;
+    font-size: 11.5px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
   }
 
   .milestones-row {
@@ -2836,7 +2954,7 @@ article.active {
 
 @media (max-width: 640px) {
   body {
-    padding: 12px 10px 96px;
+    padding: 12px 8px 96px;
   }
 
   .hero-stats-grid {
@@ -2844,7 +2962,10 @@ article.active {
   }
 
   .certifications-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .projects-grid {
@@ -2868,5 +2989,51 @@ article.active {
   .resume-download-actions {
     width: 100%;
     justify-content: space-between;
+  }
+
+  /* Modals on Mobile Screens */
+  .project-modal {
+    max-width: 95vw !important;
+    width: 95vw !important;
+    max-height: 85vh !important;
+    margin: 0 auto;
+  }
+
+  .project-modal-img {
+    height: 180px;
+  }
+
+  .project-modal-img img {
+    max-height: 180px;
+  }
+
+  .project-modal-body {
+    padding: 16px;
+  }
+
+  .project-modal-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .project-modal-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cert-modal-fullscreen {
+    max-width: 98vw !important;
+    width: 98vw !important;
+    max-height: 94vh !important;
+    height: 94vh !important;
+  }
+
+  .cert-fullscreen-topbar {
+    padding: 10px 12px;
+  }
+
+  .cert-back-btn {
+    padding: 6px 12px;
+    font-size: 11.5px;
   }
 }
